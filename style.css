@@ -1,86 +1,13 @@
-!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visão 2050 - Agro Forte e Sustentável</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+// Mensagem do botão
+function mostrarMensagem() {
+    const mensagem = document.getElementById("mensagem");
 
-    <header>
-        <h1>Visão 2050</h1>
-        <p>O Futuro do Agro Forte e Sustentável no Brasil</p>
-    </header>
+    mensagem.innerHTML =
+        "🚀 Em 2050, o Brasil será líder mundial em agricultura sustentável, utilizando inteligência artificial, robôs, drones e energia limpa para produzir mais alimentos preservando a natureza.";
 
-    <nav>
-        <a href="#futuro">Futuro</a>
-        <a href="#tecnologia">Tecnologia</a>
-        <a href="#sustentabilidade">Sustentabilidade</a>
-    </nav>
+    mensagem.style.opacity = "0";
 
-    <section id="futuro">
-        <h2>🌱 Agro Brasileiro em 2050</h2>
-        <p>
-            Em 2050, o Brasil será referência mundial em produção agrícola sustentável,
-            utilizando tecnologia de ponta para aumentar a produtividade, reduzir desperdícios
-            e preservar os recursos naturais.
-        </p>
-    </section>
-
-    <section id="tecnologia">
-        <h2>🚜 Tecnologias do Futuro</h2>
-
-        <div class="card-container">
-            <div class="card">
-                <h3>Inteligência Artificial</h3>
-                <p>Monitoramento automático das lavouras e previsão de safras.</p>
-            </div>
-
-            <div class="card">
-                <h3>Drones Agrícolas</h3>
-                <p>Análise aérea das plantações e aplicação precisa de insumos.</p>
-            </div>
-
-            <div class="card">
-                <h3>Máquinas Autônomas</h3>
-                <p>Tratores e colheitadeiras trabalhando com máxima eficiência.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="sustentabilidade">
-        <h2>🌎 Sustentabilidade</h2>
-
-        <div class="card-container">
-            <div class="card">
-                <h3>Uso Inteligente da Água</h3>
-                <p>Sistemas modernos de irrigação para evitar desperdícios.</p>
-            </div>
-
-            <div class="card">
-                <h3>Energia Renovável</h3>
-                <p>Fazendas abastecidas por energia solar, eólica e biomassa.</p>
-            </div>
-
-            <div class="card">
-                <h3>Preservação Ambiental</h3>
-                <p>Produção agrícola alinhada à proteção de florestas e rios.</p>
-            </div>
-        </div>
-
-        <button onclick="mostrarMensagem()">
-            Descobrir o Futuro do Agro
-        </button>
-
-        <p id="mensagem"></p>
-    </section>
-
-    <footer>
-        <p>Visão 2050 • Agro Forte e Sustentável no Brasil</p>
-    </footer>
-
-    <script src="script.js"></script>
-
-</body>
-</html>
+    setTimeout(() => {
+        mensagem.style.opacity = "1";
+        mensagem.style.transform = "scale(1.05)";
+    }, 100);
