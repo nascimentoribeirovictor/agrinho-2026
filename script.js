@@ -1,123 +1,144 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+// Mensagem do botão
+function mostrarMensagem() {
+    const mensagem = document.getElementById("mensagem");
+
+    mensagem.innerHTML =
+        "🚀 Em 2050, o Brasil será líder mundial em agricultura sustentável, utilizando inteligência artificial, robôs, drones e energia limpa para produzir mais alimentos preservando a natureza.";
+
+    mensagem.style.opacity = "0";
+
+    setTimeout(() => {
+        mensagem.style.opacity = "1";
+        mensagem.style.transform = "scale(1.05)";
+    }, 100);
+
+    setTimeout(() => {
+        mensagem.style.transform = "scale(1)";
+    }, 500);
 }
 
-body{
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
+// Animação ao carregar a página
+window.addEventListener("load", () => {
+    document.body.style.opacity = "0";
+
+    setTimeout(() => {
+        document.body.style.transition = "all 1.5s";
+        document.body.style.opacity = "1";
+    }, 100);
+});
+
+// Animação dos cards ao rolar
+const cards = document.querySelectorAll(".card");
+
+window.addEventListener("scroll", () => {
+    cards.forEach(card => {
+        const posicao = card.getBoundingClientRect().top;
+
+        if (posicao < window.innerHeight - 100) {
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+        }
+    });
+});
+
+// Configuração inicial dos cards
+cards.forEach(card => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(50px)";
+    card.style.transition = "all 0.8s ease";
+});
+
+// Contador de anos até 2050
+const contador = document.createElement("div");
+contador.id = "contador2050";
+contador.style.textAlign = "center";
+contador.style.fontSize = "2rem";
+contador.style.margin = "30px";
+contador.style.fontWeight = "bold";
+contador.style.color = "#2e7d32";
+
+document.body.insertBefore(contador, document.querySelector("footer"));
+
+function atualizarContador() {
+    const anoAtual = new Date().getFullYear();
+    contador.innerHTML =
+        "🌎 Faltam " + (2050 - anoAtual) + " anos para 2050";
 }
 
-header{
-    background: linear-gradient(135deg, #2e7d32, #66bb6a);
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-}
+atualizarContador();
 
-header h1{
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
+// Troca automática de cores do título
+const titulo = document.querySelector("header h1");
 
-header p{
-    font-size: 1.2rem;
-}
+const cores = [
+    "#00ff88",
+    "#00c853",
+    "#ffd600",
+    "#00e5ff",
+    "#ff9100",
+    "#76ff03"
+];
 
-nav{
-    background-color: #1b5e20;
-    padding: 15px;
-    text-align: center;
-}
+let indice = 0;
 
-nav a{
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-    transition: 0.3s;
-}
+setInterval(() => {
+    titulo.style.transition = "0.8s";
+    titulo.style.color = cores[indice];
 
-nav a:hover{
-    color: #c8e6c9;
-}
-
-section{
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-section h2{
-    margin-bottom: 15px;
-    color: #2e7d32;
-}
-
-.card-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.card{
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-
-.card:hover{
-    transform: translateY(-5px);
-}
-
-.card h3{
-    color: #2e7d32;
-    margin-bottom: 10px;
-}
-
-button{
-    background-color: #2e7d32;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    font-size: 1rem;
-    transition: 0.3s;
-}
-
-button:hover{
-    background-color: #1b5e20;
-}
-
-#mensagem{
-    margin-top: 20px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #2e7d32;
-}
-
-footer{
-    background-color: #1b5e20;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-}
-
-@media (max-width: 768px){
-    header h1{
-        font-size: 2rem;
+    indice++;
+    if (indice >= cores.length) {
+        indice = 0;
     }
+}, 1500);
 
-    nav a{
-        display: block;
-        margin: 10px 0;
-    }
+// Efeito de partículas simples
+for (let i = 0; i < 25; i++) {
+    const folha = document.createElement("div");
+
+    folha.innerHTML = "🌿";
+    folha.style.position = "fixed";
+    folha.style.left = Math.random() * 100 + "vw";
+    folha.style.top = "-50px";
+    folha.style.fontSize = (Math.random() * 20 + 15) + "px";
+    folha.style.pointerEvents = "none";
+    folha.style.zIndex = "999";
+
+    document.body.appendChild(folha);
+
+    let posY = -50;
+
+    setInterval(() => {
+        posY += 2;
+        folha.style.top = posY + "px";
+
+        if (posY > window.innerHeight + 50) {
+            posY = -50;
+            folha.style.left = Math.random() * 100 + "vw";
+        }
+    }, 30);
 }
+
+// Ano automático no rodapé
+const footer = document.querySelector("footer p");
+
+footer.innerHTML += " | " + new Date().getFullYear();
+
+// Saudação dinâmica
+const saudacao = document.createElement("h2");
+
+const hora = new Date().getHours();
+
+if (hora < 12) {
+    saudacao.innerHTML = "☀️ Bom dia!";
+} else if (hora < 18) {
+    saudacao.innerHTML = "🌤️ Boa tarde!";
+} else {
+    saudacao.innerHTML = "🌙 Boa noite!";
+}
+
+saudacao.style.textAlign = "center";
+saudacao.style.marginTop = "20px";
+saudacao.style.color = "#1b5e20";
+
+document.querySelector("header").appendChild(saudacao);
+
